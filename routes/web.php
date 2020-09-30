@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,11 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('todos', [\App\Http\Controllers\TodoController::class, 'index'])->name('todo.index');
+    Route::get('todos', [TodoController::class, 'index'])->name('todo.index');
 
-    Route::get('table-list', function () {
-        return view('pages.table_list');
-    })->name('table');
+    Route::get('programs', function () {
+        return view('pages.programs');
+    })->name('programs');
 
     Route::get('typography', function () {
         return view('pages.typography');

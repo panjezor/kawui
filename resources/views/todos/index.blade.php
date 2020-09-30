@@ -32,13 +32,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach([['id'=>1,'text'=>'kurwamac']] as $todo)
+                                        @foreach(['zrobi przyklad na podstawie nmapu', 'stworzyc bazowy proces symfony z joba','posiadanie uzytkownikow i zarzadzanie nimi','aktualna kolejka wraz z tym co zlecil user?','webhooki?','uprawnienia'] as $key=>$todo)
                                             <tr>
                                                 <td>
-                                                    {{$todo['id']}}
+                                                    {{++$key}}
                                                 </td>
                                                 <td>
-                                                    {{$todo['text']}}
+                                                    {{$todo}}
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <a rel="tooltip" class="btn btn-success btn-link"
@@ -54,6 +54,31 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Notatki</h4>
+                            <p class="card-category"> zapierdalaj gnoju</p>
+                        </div>
+                        <div class="card-body">Panel po lewej powinien miec:
+                            <ul>
+                                <li>Uzytkownikow:
+                                    <ul>
+                                        <li>liste uzytkownikow w teamie?</li>
+                                        <li>zmiane profilu/maila</li>
+                                    </ul>
+                                </li>
+                                <li>Liste aktualnych jobow, kiedy sie dodaly, kiedy je zaczeto</li>
+                                <li>System uprawnien? np. dawanie ludziom odpalac terminal albo uprawnienie na program
+                                </li>
+                                <li>Panel ze wszystkimi programami (najlepiej ukategoryzowane)</li>
+                            </ul>
+
                         </div>
                     </div>
                 </div>

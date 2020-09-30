@@ -18,51 +18,33 @@
                 </a>
             </li>
             <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-                    <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-                    <p>{{ __('Laravel Examples') }}
+                <a class="nav-link" data-toggle="collapse" href="#usersDropdown" aria-expanded="true">
+                    <i class="material-icons ">accessibility</i>
+                    <p>{{ __('Users') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="laravelExample">
+                <div class="collapse show" id="usersDropdown">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini"> UP </span>
+                                <i class="material-icons">settings_applications</i>
                                 <span class="sidebar-normal">{{ __('User profile') }} </span>
                             </a>
                         </li>
                         <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
                             <a class="nav-link" href="{{ route('user.index') }}">
-                                <span class="sidebar-mini"> UM </span>
+                                <i class="material-icons">person_search</i>
                                 <span class="sidebar-normal"> {{ __('User Management') }} </span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('table') }}">
+            <li class="nav-item{{ $activePage == 'programs' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('programs') }}">
                     <i class="material-icons">content_paste</i>
-                    <p>{{ __('Table List') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('typography') }}">
-                    <i class="material-icons">library_books</i>
-                    <p>{{ __('Typography') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('icons') }}">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>{{ __('Icons') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('map') }}">
-                    <i class="material-icons">location_ons</i>
-                    <p>{{ __('Maps') }}</p>
+                    <p>{{ __('Programs') }}</p>
                 </a>
             </li>
             <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
@@ -73,8 +55,25 @@
             </li>
             <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('todo.index') }}">
-                    <i class="material-icons">add-task</i>
                     <p>{{ __('NEEDS DOING') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('todo.index') }}">
+                    <i class="material-icons">today</i>
+                    <p>{{ __('Tasks') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('todo.index') }}">
+                    <i class="material-icons">how_to_reg</i>
+                    <p>{{ __('Permissions') }}</p>
+                </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('todo.index') }}">
+                    <i class="material-icons">memory</i>
+                    <p>{{ __('Programs') }}</p>
                 </a>
             </li>
 
