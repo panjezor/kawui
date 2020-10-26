@@ -369,7 +369,7 @@
 {{--            </div>--}}
 {{--          </div>--}}
 {{--        </div>--}}
-        <div class="col-xl-8 col-lg-10 col-md-12">
+        <div class="col-xl-10 col-lg-12">
           <div class="card">
             <div class="card-header card-header-warning">
               <h4 class="card-title">Hello, {{Auth::user()->name}}</h4>
