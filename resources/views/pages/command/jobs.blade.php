@@ -38,8 +38,9 @@
                                         <th>
                                             Last Update
                                         </th>
+                                        <th>Completed</th>
                                         <th>
-                                            Completed at
+                                            Finished at
                                         </th>
                                     </tr>
                                     </thead>
@@ -63,6 +64,9 @@
                                             </td>
                                             <td>
                                                 {{$result->updated_at}}
+                                            </td>
+                                            <td>
+                                                {{$result->completed ? 'Yes' : 'No'}}
                                             </td>
                                             <td>
                                                 {{$result->completed_at}}
