@@ -73,6 +73,9 @@ Route::group(
 }
 );
 Route::view(
+	'/', 'welcome'
+);
+Route::view(
 	'{slug?}', 'welcome'
 );
 

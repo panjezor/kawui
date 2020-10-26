@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Jobs</h4>
-                            <p class="card-category"> Here you can see awaiting tasks</p>
+                            <p class="card-category"> Please remember that tasks are automatically set to timeout after 60 seconds. If you wish to enable a queue that executes every job for more than 60 seconds, please use 'php artisan queue:work --timeout={amount in seconds}' </p>
                         </div>
                         <div class="card-body">
                             <div class="row">
