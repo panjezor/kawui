@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\CommandController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,48 +16,65 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Auth::routes();
+Route::group(
+	['middleware' => 'auth'], function () {
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('todos', [TodoController::class, 'index'])->name('todo.index');
+	Route::view(
+		'programs', 'pages.programs'
+	)
+	     ->name('programs');
+	Route::view(
+		'typography', 'pages.typography'
+	)
+	     ->name('typography');
+	Route::view(
+		'icons', 'pages.icons'
+	)
+	     ->name('icons');
+	Route::view(
+		'map', 'pages.map'
+	)
+	     ->name('map');
+	Route::view(
+		'notifications', 'pages.notifications'
+	)
+	     ->name('notifications');
+	Route::view(
+		'rtl-support', 'pages.language'
+	)
+	     ->name('language');
+	Route::view(
+		'upgrade', 'pages.upgrade'
+	)
+	     ->name('upgrade');
+	Route::resource('user', UserController::class, ['except' => ['show']]);
+	Route::prefix('profile')
+	     ->name('profile.')
+	     ->group(
+		     function () {
+			     Route::get('/', [ProfileController::class, 'edit'])
+			          ->name('edit');
+			     Route::put('/', [ProfileController::class, 'update'])
+			          ->name('update');
+			     Route::put('/password', [ProfileController::class, 'password'])
+			          ->name('password');
+		     }
+	     );
+	Route::get('command/jobs', [CommandController::class, 'index'])->name('command.jobs');
+	Route::post('command/dispatch', [CommandController::class, 'submitJobRequest'])
+	     ->name('command.dispatch');
+	Route::get('command/{name}',[CommandController::class, 'showRequestForm'])->name('command.showRequestForm');
 
-    Route::get('programs', function () {
-        return view('pages.programs');
-    })->name('programs');
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+	     ->name('home');
+	Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+	
+}
+);
+Route::view(
+	'{slug?}', 'welcome'
+);
 
-    Route::get('typography', function () {
-        return view('pages.typography');
-    })->name('typography');
 
-    Route::get('icons', function () {
-        return view('pages.icons');
-    })->name('icons');
-
-    Route::get('map', function () {
-        return view('pages.map');
-    })->name('map');
-
-    Route::get('notifications', function () {
-        return view('pages.notifications');
-    })->name('notifications');
-
-    Route::get('rtl-support', function () {
-        return view('pages.language');
-    })->name('language');
-
-    Route::get('upgrade', function () {
-        return view('pages.upgrade');
-    })->name('upgrade');
-
-    Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-    Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-});
-Route::get('/', function () {
-    return view('welcome');
-});
 

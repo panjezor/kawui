@@ -47,35 +47,13 @@
                     <p>{{ __('Programs') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('notifications') }}">
-                    <i class="material-icons">notifications</i>
-                    <p>{{ __('Notifications') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('todo.index') }}">
-                    <p>{{ __('NEEDS DOING') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('todo.index') }}">
+            <li class="nav-item{{ $activePage == 'tasks' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('command.jobs') }}">
                     <i class="material-icons">today</i>
                     <p>{{ __('Tasks') }}</p>
                 </a>
             </li>
-            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('todo.index') }}">
-                    <i class="material-icons">how_to_reg</i>
-                    <p>{{ __('Permissions') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'to-do-list' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('todo.index') }}">
-                    <i class="material-icons">memory</i>
-                    <p>{{ __('Programs') }}</p>
-                </a>
-            </li>
+
 
         </ul>
     </div>

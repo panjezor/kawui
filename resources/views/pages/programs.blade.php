@@ -11,9 +11,9 @@
                             <p class="card-category">All configured programs</p>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive table-hover table-striped">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class="text-primary">
                                         <th>
                                             ID
                                         </th>
@@ -33,7 +33,7 @@
                                     <tbody>
                                         @php($programs = App\Models\Program::all())
                                         @foreach($programs as $key=>$program)
-                                            <tr>
+                                            <tr onclick="window.location.href = '{{route('command.showRequestForm', $program->name)}}'">
                                                 <td>
                                                     {{$program->id}}
                                                 </td>

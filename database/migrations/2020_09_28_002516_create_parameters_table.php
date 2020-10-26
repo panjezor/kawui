@@ -15,9 +15,9 @@ class CreateParametersTable extends Migration
     {
         Schema::create('parameters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('program_id')->constrained()->onDelete('cascade');
+            $table->foreignId('param_category_id')->constrained()->onDelete('cascade');
             $table->string('param');
-            $table->index(['program_id', 'param']);
+            $table->unique(['param_category_id', 'param']);
             $table->text('description');
             $table->boolean('accepts_values');
             $table->text('tip_for_values')->nullable();
