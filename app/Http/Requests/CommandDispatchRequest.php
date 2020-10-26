@@ -17,7 +17,7 @@ class CommandDispatchRequest extends FormRequest
 		return [
 			'program_id' => ['required','exists:'.Program::class.',id'], // check for model
 			'param.0' => [],
-			'paramcommand.*' => ['accepted'],
+			'paramcommand.*' => [],
 			'param.*' => [],
 		];
 	}

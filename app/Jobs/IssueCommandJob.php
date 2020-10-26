@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\CommandResult;
 use App\Models\Program;
+use App\Models\User;
 use App\Services\ProgramPreparationServiceInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,6 +19,8 @@ class IssueCommandJob implements ShouldQueue
 	use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 	protected $command = [];
+
+	protected $result_id;
 
 	/**
 	 * Create a new job instance.
@@ -58,6 +61,16 @@ class IssueCommandJob implements ShouldQueue
 		}
 		// reset the keys.
 		$this->command = $command;
+		/**
+		 * @var $result CommandResult
+		 */
+		$result = User::query()->find($this->user)
+		              ->results()
+		              ->save(
+			              CommandResult::factory()
+			                           ->makeOne(['command' => implode(' ', $this->command)])
+		              );
+		$this->result_id = $result->getKey();
 	}
 
 	/**
@@ -69,15 +82,7 @@ class IssueCommandJob implements ShouldQueue
 	function handle()
 	{
 		$process = new Process($this->command);
-		/**
-		 * @var $result CommandResult
-		 */
-		$result = User::find($this->user)
-		              ->results()
-		              ->save(
-			              CommandResult::factory()
-			                           ->makeOne(['command' => implode(' ', $this->command)])
-		              );
+		$result = CommandResult::query()->find($this->result_id);
 		$process->run();
 		if ($process->isSuccessful()) {
 			$result->output = $process->getOutput();

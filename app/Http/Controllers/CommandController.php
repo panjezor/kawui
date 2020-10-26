@@ -6,6 +6,7 @@ use App\Http\Requests\CommandDispatchRequest;
 use App\Jobs\IssueCommandJob;
 use App\Models\CommandResult;
 use App\Services\ProgramPreparationServiceInterface;
+use Illuminate\Http\Request;
 
 class CommandController extends Controller
 {
@@ -43,9 +44,9 @@ class CommandController extends Controller
 	{
 		$data = $request->validated();
 		IssueCommandJob::dispatch(
-			$this->programs->findProgramById($data['program_id']), $data['param'], $data['paramcommand']
+			$this->programs->findProgramById($data['program_id']), $data['param'], $data['paramcommand'] ?? []
 		);
 
-		return redirect(route('jobs'));
+		return redirect(route('command.jobs'));
 	}
 }

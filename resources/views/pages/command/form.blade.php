@@ -14,6 +14,7 @@
                                 @csrf
                                 <fieldset class="container">
                                     <legend>{{__('Specify Target')}}</legend>
+                                    <input type="hidden" value="{{$program->id}}" name="program_id">
                                     <div class="row">
                                         <div class="form-group col-md-6 col-sm-12">
                                             <div class="custom-control custom-checkbox d-flex justify-content-between">
@@ -28,6 +29,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div >
+                                        <button type="submit"
+                                                class="btn btn-primary  btn-lg">{{ __('Dispatch task') }}</button>
+                                    </div>
                                 </fieldset>
                                 @foreach($program->paramCategories as $paramCategory)
                                     <fieldset class="container">
@@ -40,7 +45,7 @@
                                                         <div class="col-md-6 col-sm-12">
                                                             <input type="checkbox" class="custom-control-input"
                                                                    id="paramcommand[{{$parameter->id}}]"
-                                                                   name="paramcommand[{{$parameter->id}}]">
+                                                                   name="paramcommand[{{$parameter->id}}]" value="true">
                                                             <label class="custom-control-label"
                                                                    for="paramcommand[{{$parameter->id}}]">Apply {{$parameter->param}}{{' - '.$parameter->description}}</label>
                                                         </div>
